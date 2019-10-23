@@ -1,6 +1,10 @@
-/**
- * A class to perform your own tests
- */
+/***
+* Name: ford-fulkerson
+* Author: eric Papain
+* Description: 
+* Tags: Tag1, Tag2, TagN
+***/
+
  
 import java.io.FileInputStream;
 import java.io.InputStream;

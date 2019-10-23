@@ -1,3 +1,10 @@
+/***
+* Name: tri_fusion
+* Author: eric Papain
+* Description: 
+* Tags: Tag1, Tag2, TagN
+***/
+
 
 public class tri_fusion {
 	public static void triFusion(int tableau[])

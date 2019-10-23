@@ -1,4 +1,9 @@
-
+/***
+* Name: Graphe
+* Author: eric Papain
+* Description: 
+* Tags: Tag1, Tag2, TagN
+***/
 public class Graphe {
 
 	// Declaration de variable
@@ -100,7 +105,7 @@ public class Graphe {
 	 public boolean supprimeSommet(int i){
          if((i<0)||(i>=U.length))
          {
-         System.out.println(" i n'appartient pas à [0;U.length]");
+         System.out.println(" i n'appartient pas ï¿½ [0;U.length]");
          System.exit(-1);
          }
                  if(!existeSommet(i))
@@ -111,7 +116,7 @@ public class Graphe {
                  {
                          if( degre(i)!=0)
                       {
-                System.out.println("le sommet "+i+" est encore connecté");
+                System.out.println("le sommet "+i+" est encore connectï¿½");
                 System.exit(-1);
                  }
                                                           
@@ -203,13 +208,13 @@ public class Graphe {
 		int[] tab = new int[nbSommet()];
 		int y=0;
 		while (y < nbSommet()){
-			for (int j=0; j<U[i].length;j++)//oublié dans le code
+			for (int j=0; j<U[i].length;j++)//oubliï¿½ dans le code
 				if (U[i][j]!=ALPHA_NOTDEF){
 					tab[y]=U[i][j];
 					y++;
 				}
 		}
-		return tab;	//oublié dans le code		
+		return tab;	//oubliï¿½ dans le code		
 	}
 	
 	public String toString(){

@@ -1,5 +1,11 @@
-import java.util.Vector;
+/***
+* Name: Dijkstra
+* Author: eric Papain
+* Description: 
+* Tags: Tag1, Tag2, TagN
+***/
 
+import java.util.Vector;
 
 public class Dijkstra {
 	
@@ -8,13 +14,13 @@ public class Dijkstra {
 	public static final int INFINITE = 1000;//Integer.MAX_VALUE;
 	public final static int ALPHA_NOTDEF = -999 ;// on met final psk c'est une constante
 	private int x0;
-	private int [] S;//ensemble de sommets dont les distances les plus courtes à la source sont connues au départ seulement Source
-	private int [] R;//ensemble des prédécesseur des sommets de 0 à N-1;
+	private int [] S;//ensemble de sommets dont les distances les plus courtes ï¿½ la source sont connues au dï¿½part seulement Source
+	private int [] R;//ensemble des prï¿½dï¿½cesseur des sommets de 0 ï¿½ N-1;
 	private Graphe g0;
-	private int [] D;//tableau des valeurs du meilleur raccourci pour se rendre à chaque sommet
+	private int [] D;//tableau des valeurs du meilleur raccourci pour se rendre ï¿½ chaque sommet
 	// rajout
-	private boolean [] noeudsMarqués;
-	private static int dimensionDeLaMatrice;//je rajoute ça pour simplifier le code.
+	private boolean [] noeudsMarques;
+	private static int dimensionDeLaMatrice;//je rajoute ï¿½a pour simplifier le code.
 	
 	public Dijkstra( int x, Graphe g){	
 		x0 = x;
@@ -22,7 +28,7 @@ public class Dijkstra {
 		dimensionDeLaMatrice = g0.nbSommet();
 		S = new int [dimensionDeLaMatrice];//sommets atteints
 		D = new int [dimensionDeLaMatrice];//distances
-		noeudsMarqués = new boolean[dimensionDeLaMatrice];
+		noeudsMarques = new boolean[dimensionDeLaMatrice];
 		R = new int [dimensionDeLaMatrice];
 		calculePlusCourtChemin();
 	}
@@ -30,9 +36,9 @@ public class Dijkstra {
 	private void calculePlusCourtChemin(){ 
 	    int n =0;
 		for (int a = 0; a < dimensionDeLaMatrice; a++){
-			noeudsMarqués[a] =false;
-			S[a]=-1; //en supposant qu'on numérote les sommets de 0 ou de 1 à n.
-			R[a]=-1; // pour les noeuds qui n'ont pas de prédecésseur
+			noeudsMarques[a] =false;
+			S[a]=-1; //en supposant qu'on numÃ©rote les sommets de 0 ou de 1 Ã© n.
+			R[a]=-1; // pour les noeuds qui n'ont pas de prÃ©decÃ©sseur
 		}
 		
 		S[n]=x0;
@@ -40,9 +46,9 @@ public class Dijkstra {
 		R[x0]=x0;
 		initDistMin();
 		for (int i = 0; i< dimensionDeLaMatrice ;i++){	
-			if (!contains(S,i)){// à revoir
+			if (!contains(S,i)){// revoir
 				int t = choixSommet();
-				noeudsMarqués[t] = true;
+				noeudsMarques[t] = true;
 				n++;
 				S[n]=t;
 				majDistMin(t);
@@ -57,9 +63,9 @@ public class Dijkstra {
 //		System.out.println();
 	}
 	
-	//implémentation de initDistMin
+	//implï¿½mentation de initDistMin
 	private void initDistMin(){
-		noeudsMarqués[x0]=true;
+		noeudsMarques[x0]=true;
 		for (int i=0; i<dimensionDeLaMatrice;i++){
 			if(g0.existeArc(x0,i)){
 				D[i] = g0.getU()[x0][i];
@@ -96,7 +102,7 @@ public class Dijkstra {
 		int valeurMin = INFINITE;
 		int min = x0;
 		for (int i=0; i<dimensionDeLaMatrice ;i++){
-			if (!noeudsMarqués[i])
+			if (!noeudsMarques[i])
 				if (D[i]<=valeurMin){
 					min = i;
 					valeurMin = D[i];
@@ -106,15 +112,15 @@ public class Dijkstra {
 	}
 	
 	
-    //fonction à définir :S.contains(i)
+    //fonction ï¿½ dï¿½finir :S.contains(i)
 	private boolean contains(int[] S, int i){
-		return noeudsMarqués[i];
+		return noeudsMarques[i];
 	}
 	
 	public int longueurChemin (int i){
 		return D[i];
 	}
-	//fonction à définir min
+	//fonction min
 	private int min (int i, int j){
 		if (i<=j)
 			return i;
@@ -122,12 +128,12 @@ public class Dijkstra {
 	}
 	public void afficheChemin(int i){
 		int source = x0;
-		int antécédent = i;
+		int antecedent = i;
 		Vector <Integer> lesNoeudsIntermediaires = new Vector<Integer>();;
-		System.out.println("Chemin de "+x0+" à "+ i+":");
-		while (antécédent!=source){
-			lesNoeudsIntermediaires.add(antécédent);
-			antécédent = R[antécédent];
+		System.out.println("Chemin de "+x0+" ï¿½ "+ i+":");
+		while (antecedent!=source){
+			lesNoeudsIntermediaires.add(antecedent);
+			antecedent = R[antecedent];
 			
 		}
 		lesNoeudsIntermediaires.add(source);
@@ -152,7 +158,7 @@ public class Dijkstra {
 						   {N,N,4,N,N,N,N,N,5,N,N},
 						   {N,N,N,N,N,N,N,7,N,N,N},
 		                  };
-		//création du graphe			
+		//crÃ©ation du graphe			
 		Graphe g0 = new Graphe(matDuree);
 		//LA SUITE		
 		
@@ -174,14 +180,14 @@ public class Dijkstra {
 		System.out.println("Le temps mini pour aller de beaulieu au Stade est :"+duree2);
 		//Faire d'autres tests
 		int dureeVillejean = beaulieuAutresStations.longueurChemin(10);
-		System.out.println("Le temps mini pour aller de beaulieu à VilleJean est :"+dureeVillejean);
+		System.out.println("Le temps mini pour aller de beaulieu ï¿½ VilleJean est :"+dureeVillejean);
 		
 		// Pour afficher le chemin le plus rapide pour aller de beaulieu a Clemenceau
-		beaulieuAutresStations.afficheChemin(3); // pour ça il faut un tableau de prédécesseur, il nous faudra un tableau de routage
-		//il nous faudrait créer un tableau R des prédecesseurs.
+		beaulieuAutresStations.afficheChemin(3); // pour l'a il faut un tableau de predecesseur, il nous faudra un tableau de routage
+		//il nous faudrait creer un tableau R des predecesseurs.
 		
 		
-		//Creation d'une nouvelle instance de l'algorithme avec un départ de Republique
+		//Creation d'une nouvelle instance de l'algorithme avec un depart de Republique
 		Dijkstra republiqueAutresStations= new Dijkstra(7,g0);
 		republiqueAutresStations.calculePlusCourtChemin();
 		int duree3 = republiqueAutresStations.longueurChemin(3);

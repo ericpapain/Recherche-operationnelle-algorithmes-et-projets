@@ -1,3 +1,10 @@
+/***
+* Name: GrapheOriente
+* Author: eric Papain
+* Description: 
+* Tags: Tag1, Tag2, TagN
+***/
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -84,7 +91,7 @@ public class GrapheOriente {
 
         for (int i = 0; i < getN(); i++) {
             for(Arc a : adjacence.get(i)){
-                if (a.getA()==v) entrants.add(a) ;
+                if (a.getA()==v) entrants.add(a);
             }
         }
         return Collections.unmodifiableList(entrants);
