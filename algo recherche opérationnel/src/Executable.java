@@ -12,7 +12,7 @@ import java.io.InputStream;
 public class Executable {
     
     public static void main(String[] args) {
-        //I can test my class here: create instances and call the method(s), check the results
+        //je peux maintenant essayer d'exécuter mon code sur un fichier exemple
         try {
             
             InputStream input = new FileInputStream("test.txt");
